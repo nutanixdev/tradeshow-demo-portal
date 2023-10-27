@@ -23,7 +23,7 @@
       </button>
       {% endif %}
       <button class="btn btn-primary" type="button" onclick="window.open('{{ card.url }}', '_blank');"
-        id="{{ card.pk }}">Open</button>
+        id="button{{ card.id }}">Open</button>
       <div class="collapse" id="collapse{{card.id}}">
         <div class="card card-body my-2">
           <p class="text-muted">Username: <strong>{{ card.username}}</strong></p>
