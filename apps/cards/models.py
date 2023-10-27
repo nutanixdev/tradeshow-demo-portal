@@ -33,11 +33,14 @@ class CardManager(models.Manager):
 class Card(models.Model):
     title = models.CharField(max_length=32)
     image = ResizedImageField(crop=[
-                              'middle', 'center'], upload_to="images", null=True, help_text="Icon should be at least 200x200 px. Icon will be automatically cropped otherwise.")
+                              'middle', 'center'], upload_to="images", null=True, blank=True, help_text="Icon should be at least 200x200 px. Icon will be automatically cropped otherwise.")
+    image_url = models.URLField(null=True, blank=True)
     description = models.CharField(max_length=32)
     url = models.URLField()
-    username = models.CharField(max_length=128)
-    password = models.CharField(max_length=128)
+    username = models.CharField(
+        max_length=128, help_text="If there is no username, type n/a")
+    password = models.CharField(
+        max_length=128, help_text="If there is no password, type n/a")
     visible = models.BooleanField(default=True)
     tags = models.ManyToManyField(Tag, blank=True)
 

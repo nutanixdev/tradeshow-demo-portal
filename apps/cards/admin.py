@@ -17,6 +17,20 @@ def make_invisible(modeladmin, request, queryset):
 class CardAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ('title', 'visible')
     actions = [make_visible, make_invisible]
+    fieldsets = [
+        (
+            None,
+            {
+                "fields": ['title', 'description', 'url', 'username', 'password', 'visible', 'tags'],
+            },
+        ),
+        (
+            'Choose only one image option:',
+            {
+                "fields": ['image', 'image_url'],
+            },
+        ),
+    ]
 
 
 admin.site.register(Card, CardAdmin)

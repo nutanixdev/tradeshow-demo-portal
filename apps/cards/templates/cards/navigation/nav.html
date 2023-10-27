@@ -12,18 +12,18 @@
 
     <form action="{% url 'index'%}" class="d-flex">
       <input class="form-control me-2" type="search" name="q" aria-label="Search">
-      <button class="btn btn-light" type="submit">Search</button>
+      <button class="btn btn-primary" type="submit">Search</button>
     </form>
   </div>
 
-  <div>
+  <!-- <div>
     <select id="multipleSelect" multiple name="native-select" placeholder="Select Category" data-search="true"
       data-silent-initial-value-set="true">
       {%for tag in tags %}
       <option value="{{tag.id}}">{{tag}}</option>
       {% endfor %}
     </select>
-  </div>
+  </div> -->
 
   <div class="d-flex justify-content-end">
     <div class="py-2">

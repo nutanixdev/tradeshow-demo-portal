@@ -1,7 +1,8 @@
 <div class="col-lg-2 col-md-6">
   <div class="card mb-3 mh-100">
     <div class="card-body">
-      <img src="{{ card.image.url }}" alt="{{ card.title }}" height="75">
+      <img src="{{ card.image_url|default:'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' }}"
+        alt="{{ card.title }}">
     </div>
 
     <div class="card-body py-0 ">
@@ -15,18 +16,17 @@
 
 
     <div class="card-body main-buttons">
-
+      {% if not 'n/a' in card.username %}
       <button class="btn btn-primary collapsed" type="button" data-bs-toggle="collapse"
         data-bs-target="#collapse{{card.id}}" aria-expanded="true" aria-controls="collapse{{card.id}}">
         Credentials
       </button>
-      <button class="btn btn-primary" type="button">
-        <a href="{{ card.url }}" target=”_blank” class="text-white">Open</a></button>
-
+      {% endif %}
+      <button class="btn btn-primary" type="button" onclick="window.open('{{ card.url }}', '_blank');"
+        id="{{ card.pk }}">Open</button>
       <div class="collapse" id="collapse{{card.id}}">
         <div class="card card-body my-2">
           <p class="text-muted">Username: <strong>{{ card.username}}</strong></p>
-
           <button class="btn btn-primary" type="button" id="{{card.id}}" value="{{ card.password}}"
             onclick="copyPassword(buttonId='{{card.id}}')">Copy Password</button>
 
